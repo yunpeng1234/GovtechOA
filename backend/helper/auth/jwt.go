@@ -7,7 +7,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
-	"url_shortener/model"
+
+	"github.com/yunpeng1234/GovtechOA/model"
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v4"

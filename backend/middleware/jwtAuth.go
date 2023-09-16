@@ -3,7 +3,8 @@ package middleware
 import (
 	"fmt"
 	"net/http"
-	helper "url_shortener/helper/auth"
+
+	helper "github.com/yunpeng1234/GovtechOA/helper/auth"
 
 	"github.com/gin-gonic/gin"
 )

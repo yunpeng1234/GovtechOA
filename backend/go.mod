@@ -1,4 +1,4 @@
-module url_shortener
+module github.com/yunpeng1234/GovtechOA
 
 go 1.18
 

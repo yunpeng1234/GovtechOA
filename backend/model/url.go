@@ -1,7 +1,7 @@
 package model
 
 import (
-	"url_shortener/database"
+	"github.com/yunpeng1234/GovtechOA/database"
 
 	"gorm.io/gorm"
 )

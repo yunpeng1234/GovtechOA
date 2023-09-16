@@ -3,7 +3,8 @@ package model
 import (
 	"html"
 	"strings"
-	"url_shortener/database"
+
+	"github.com/yunpeng1234/GovtechOA/database"
 
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"

@@ -2,7 +2,7 @@ package controller
 
 import (
 	"net/http"
-	"url_shortener/helper"
+	helper "url_shortener/helper/auth"
 	"url_shortener/model"
 
 	"github.com/gin-gonic/gin"
