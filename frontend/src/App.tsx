@@ -3,9 +3,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import HomePage from './Home';
 import LoginPage from './Login';
 import RegisterPage from './Register';
+import React , {useContext} from 'react'
 
 function App() {
-  const [token, setToken] = useState();
 
   if(!token) {
     return <LoginPage  />

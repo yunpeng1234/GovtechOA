@@ -3,10 +3,11 @@ package main
 import (
 	"fmt"
 	"log"
-	"url_shortener/controller"
-	"url_shortener/database"
-	"url_shortener/middleware"
-	"url_shortener/model"
+
+	"github.com/yunpeng1234/GovtechOA/controller"
+	"github.com/yunpeng1234/GovtechOA/database"
+	"github.com/yunpeng1234/GovtechOA/middleware"
+	"github.com/yunpeng1234/GovtechOA/model"
 
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
