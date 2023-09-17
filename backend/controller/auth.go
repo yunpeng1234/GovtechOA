@@ -3,9 +3,9 @@ package controller
 import (
 	"net/http"
 
-	helper "github.com/yunpeng1234/GovtechOA/helper/auth"
-	"github.com/yunpeng1234/GovtechOA/model"
-	"github.com/yunpeng1234/GovtechOA/template"
+	helper "github.com/yunpeng1234/GovtechOA/backend/helper/auth"
+	"github.com/yunpeng1234/GovtechOA/backend/model"
+	"github.com/yunpeng1234/GovtechOA/backend/template"
 
 	"github.com/gin-gonic/gin"
 )

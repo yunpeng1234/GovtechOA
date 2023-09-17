@@ -1,7 +1,7 @@
 package model
 
 import (
-	"github.com/yunpeng1234/GovtechOA/database"
+	"github.com/yunpeng1234/GovtechOA/backend/database"
 
 	"gorm.io/gorm"
 )

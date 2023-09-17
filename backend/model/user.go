@@ -4,7 +4,7 @@ import (
 	"html"
 	"strings"
 
-	"github.com/yunpeng1234/GovtechOA/database"
+	"github.com/yunpeng1234/GovtechOA/backend/database"
 
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"

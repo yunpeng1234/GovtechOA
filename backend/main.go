@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/yunpeng1234/GovtechOA/controller"
-	"github.com/yunpeng1234/GovtechOA/database"
-	"github.com/yunpeng1234/GovtechOA/middleware"
-	"github.com/yunpeng1234/GovtechOA/model"
+	"github.com/yunpeng1234/GovtechOA/backend/controller"
+	"github.com/yunpeng1234/GovtechOA/backend/database"
+	"github.com/yunpeng1234/GovtechOA/backend/middleware"
+	"github.com/yunpeng1234/GovtechOA/backend/model"
 
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
@@ -20,7 +20,7 @@ func main() {
 }
 
 func loadEnv() {
-	err := godotenv.Load(".env.local")
+	err := godotenv.Load("backend/.env.local")
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}

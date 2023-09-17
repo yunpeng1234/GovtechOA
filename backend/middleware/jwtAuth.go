@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	helper "github.com/yunpeng1234/GovtechOA/helper/auth"
+	helper "github.com/yunpeng1234/GovtechOA/backend/helper/auth"
 
 	"github.com/gin-gonic/gin"
 )

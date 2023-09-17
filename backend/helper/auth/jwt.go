@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yunpeng1234/GovtechOA/model"
+	"github.com/yunpeng1234/GovtechOA/backend/model"
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v4"

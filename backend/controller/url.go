@@ -2,8 +2,9 @@ package controller
 
 import (
 	"net/http"
-	helper "url_shortener/helper/auth"
-	"url_shortener/model"
+
+	helper "github.com/yunpeng1234/GovtechOA/backend/helper/auth"
+	"github.com/yunpeng1234/GovtechOA/backend/model"
 
 	"github.com/gin-gonic/gin"
 )

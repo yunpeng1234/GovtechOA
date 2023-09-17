@@ -17,11 +17,11 @@ const signIn = (username, password) => {
             setName('');
             setPassword('');
             navigate(from, {replace : true});
-    }
-    else{
-        console.log('incorrect submission');
-        setError(res.message);
-    }
+        }
+        else{
+            console.log('incorrect submission');
+            setError(res.message);
+        }
     })
     console.log('working');
 }
