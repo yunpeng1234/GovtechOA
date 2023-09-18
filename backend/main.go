@@ -45,6 +45,6 @@ func serveApplication() {
 	protectedRoutes.GET("/url", controller.GetAllUrl)
 	protectedRoutes.DELETE("/url", controller.DeleteUrl)
 
-	router.Run(":8000")
+	router.Run("localhost:8000")
 	fmt.Println("Server running on port 8000")
 }

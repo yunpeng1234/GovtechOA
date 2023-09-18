@@ -12,7 +12,6 @@ import (
 
 func Register(context *gin.Context) {
 	var input template.AuthFormInput
-
 	if err := context.ShouldBindJSON(&input); err != nil {
 
 		context.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -23,7 +22,6 @@ func Register(context *gin.Context) {
 		Username: input.Username,
 		Password: input.Password,
 	}
-
 	savedUser, err := user.Save()
 
 	if err != nil {

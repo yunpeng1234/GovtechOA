@@ -1,6 +1,12 @@
-import { Form, Input, Button} from "antd";
+import { Form, Input, Button } from "antd";
+import { signIn } from "./api/auth";
 
-const onFinish = (values: any) => {
+interface LoginFormProps {
+  username: string;
+  password: string;
+}
+
+const onFinish = (values: LoginFormProps) => {
   console.log("Success:", values);
 };
 
@@ -37,9 +43,7 @@ const LoginPage = () => {
       </Form.Item>
 
       <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-        <Button type="primary">
-          Submit
-        </Button>
+        <Button type="primary">Submit</Button>
       </Form.Item>
     </Form>
   );

@@ -7,8 +7,10 @@ import React, { createContext } from "react";
 
 const AuthContext = createContext<any>(null);
 
-const AuthProvider = (children: React.ReactNode) => {
-  const [user, setUser] = React.useState();
+const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+  const storedUser = localStorage.getItem("user");
+
+  const [user, setUser] = React.useState(storedUser);
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>

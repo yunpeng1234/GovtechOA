@@ -1,20 +1,30 @@
-import axios from 'axios'
+import api from "../helper/axios";
 
 export interface URLProp {
-    user: string
-    longUrl: string
-    shortUrl :string
+  user: string;
+  longurl: string;
+  shorturl: string;
 }
 
-
-const saveUrl = (props: URLProp) => {
-
+export interface URLReturnProp {
+  longUrl: string;
+  shortUrl: string;
 }
 
-const deleteUrl = (props: URLProp) => {
+const saveUrl = async (props: URLProp) => {
+  const urls = await api.post("http://localhost:8000/api/url", { props });
+  return urls;
+};
 
-}
+const deleteUrl = async () => {
+  const urls = await api.delete("http://localhost:8000/api/url");
+  return urls;
+};
 
-const getAllUrls = (user:string) => {
+const getAllUrls = async () => {
+  const urls = await api.get("http://localhost:8000/api/url");
+  const res: URLReturnProp[] = urls.data;
+  return res;
+};
 
-}
+export { saveUrl, deleteUrl, getAllUrls };
