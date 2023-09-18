@@ -24,6 +24,7 @@ const HomePage = () => {
   };
   const listOfUrls = useQuery({
     queryFn: getAllUrls,
+    queryKey: [],
     onError: (error) => {
       console.log(error);
     },
@@ -49,7 +50,7 @@ const HomePage = () => {
         >
           Shorten!
         </Button>
-        <a href={url}>{shortend}</a>
+        <a href={"//".concat(url)}>{shortend}</a>
       </div>
       <Button
         type="primary"
@@ -60,9 +61,15 @@ const HomePage = () => {
       >
         Save Me
       </Button>
-      {listOfUrls?.data?.map((x: URLReturnProp) => {
-        return <a href={x.longUrl}>{x.shortUrl}</a>;
-      })}
+      <div className="flex flex-col">
+        {listOfUrls?.data?.map((x: URLReturnProp, index: number) => {
+          return (
+            <a key={index} href={"//".concat(x.originalURL)}>
+              {x.shortenURL}
+            </a>
+          );
+        })}
+      </div>
     </>
   );
 };

@@ -17,7 +17,6 @@ func AddURL(context *gin.Context) {
 		context.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-
 	user, err := helper.CurrentUser(context)
 
 	if err != nil {
@@ -39,7 +38,6 @@ func AddURL(context *gin.Context) {
 
 // Get all for dashboarding
 func GetAllUrl(context *gin.Context) {
-
 	user, err := helper.CurrentUser(context)
 
 	if err != nil {

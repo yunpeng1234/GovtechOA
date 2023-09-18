@@ -7,7 +7,6 @@ export function ProtectedRoute({ children }: { children: JSX.Element }) {
   const { user } = useContext(AuthContext);
   const token = localStorage.getItem("token");
   const location = useLocation();
-
   if (!user || !token) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   } else {

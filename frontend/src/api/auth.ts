@@ -9,15 +9,14 @@ const API = axios.create({
 export const signIn = async (username: string, password: string) => {
   try {
     const resp = await API.post("/auth/login", {
-      Username: username,
-      Password: password,
+      username,
+      password,
     });
+
     if (resp.status == 200) {
       const token = resp.data.jwt;
       localStorage.setItem("token", token);
       localStorage.setItem("user", username);
-      const { setUser } = useContext(AuthContext);
-      setUser(username);
       return { status: 200, message: "Success" };
     }
   } catch (e) {

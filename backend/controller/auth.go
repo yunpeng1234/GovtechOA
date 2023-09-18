@@ -12,9 +12,10 @@ import (
 
 func Register(context *gin.Context) {
 	var input template.AuthFormInput
+
 	if err := context.ShouldBindJSON(&input); err != nil {
 
-		context.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		context.JSON(http.StatusBadRequest, gin.H{"error": "Bad Request"})
 		return
 	}
 
@@ -25,7 +26,7 @@ func Register(context *gin.Context) {
 	savedUser, err := user.Save()
 
 	if err != nil {
-		context.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		context.JSON(http.StatusBadRequest, gin.H{"error": "Unable to save user into system"})
 		return
 	}
 
@@ -34,30 +35,30 @@ func Register(context *gin.Context) {
 
 func Login(context *gin.Context) {
 	var input template.AuthFormInput
-
+	// body, _ := io.ReadAll(context.Request.Body)
+	// println(string(body))
 	if err := context.ShouldBindJSON(&input); err != nil {
-
-		context.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		context.JSON(http.StatusBadRequest, gin.H{"error": "Bad Request"})
 		return
 	}
 
 	user, err := model.FindUserByUsername(input.Username)
 
 	if err != nil {
-		context.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		context.JSON(http.StatusBadRequest, gin.H{"error": "Username does not exist"})
 		return
 	}
 
 	err = user.ValidatePassword(input.Password)
 
 	if err != nil {
-		context.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		context.JSON(http.StatusBadRequest, gin.H{"error": "Invalid Credentials"})
 		return
 	}
 
 	jwt, err := helper.GenerateJWT(user)
 	if err != nil {
-		context.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		context.JSON(http.StatusBadRequest, gin.H{"error": "Error Generating JWT token"})
 		return
 	}
 

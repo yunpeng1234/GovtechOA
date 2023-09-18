@@ -9,6 +9,7 @@ import (
 	"github.com/yunpeng1234/GovtechOA/backend/middleware"
 	"github.com/yunpeng1234/GovtechOA/backend/model"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
@@ -34,7 +35,11 @@ func loadDatabase() {
 
 func serveApplication() {
 	router := gin.Default()
-
+	// same as
+	config := cors.DefaultConfig()
+	config.AllowAllOrigins = true
+	config.AddAllowHeaders("Authorization")
+	router.Use(cors.New(config))
 	publicRoutes := router.Group("/auth")
 	publicRoutes.POST("/register", controller.Register)
 	publicRoutes.POST("/login", controller.Login)

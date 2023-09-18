@@ -1,20 +1,34 @@
 import { Form, Input, Button } from "antd";
 import { signIn } from "./api/auth";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "./context/AuthContext";
 
 interface LoginFormProps {
   username: string;
   password: string;
 }
 
-const onFinish = (values: LoginFormProps) => {
-  console.log("Success:", values);
-};
-
 const onFinishFailed = (errorInfo: any) => {
   console.log("Failed:", errorInfo);
 };
 
 const LoginPage = () => {
+  const { setUser } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+  const onFinish = async (values: LoginFormProps) => {
+    console.log(values);
+    const res = await signIn(values.username, values.password);
+
+    if (res?.status == 200) {
+      setUser(values.username);
+      navigate("/");
+      return;
+    } else {
+      console.log(res?.message);
+    }
+  };
   return (
     <Form
       name="basic"
@@ -43,7 +57,9 @@ const LoginPage = () => {
       </Form.Item>
 
       <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-        <Button type="primary">Submit</Button>
+        <Button type="primary" htmlType="submit">
+          Submit
+        </Button>
       </Form.Item>
     </Form>
   );

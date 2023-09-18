@@ -14,7 +14,6 @@ type URLMapping struct {
 }
 
 func (urlMapping *URLMapping) Save() (*URLMapping, error) {
-
 	err := database.Database.Create(&urlMapping).Error
 	if err != nil {
 		return &URLMapping{}, err

@@ -7,13 +7,20 @@ export interface URLProp {
 }
 
 export interface URLReturnProp {
-  longUrl: string;
-  shortUrl: string;
+  originalURL: string;
+  shortenURL: string;
 }
 
 const saveUrl = async (props: URLProp) => {
-  const urls = await api.post("http://localhost:8000/api/url", { props });
-  return urls;
+  try {
+    const urls = await api.post("http://localhost:8000/api/url", {
+      originalURL: props.longurl,
+      shortenURL: props.shorturl,
+    });
+    return urls;
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 const deleteUrl = async () => {
@@ -23,8 +30,8 @@ const deleteUrl = async () => {
 
 const getAllUrls = async () => {
   const urls = await api.get("http://localhost:8000/api/url");
-  const res: URLReturnProp[] = urls.data;
-  return res;
+  const res: { data: URLReturnProp[] } = urls.data;
+  return res.data;
 };
 
 export { saveUrl, deleteUrl, getAllUrls };
