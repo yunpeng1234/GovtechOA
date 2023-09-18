@@ -7,12 +7,8 @@ import React, { createContext } from "react";
 
 const AuthContext = createContext<any>(null);
 
-interface AuthContextProps {
-  children: React.ReactNode[];
-}
-
-const AuthProvider = ( {children }: AuthContextProps) => {
-  const [user, setUser] = React.useState({});
+const AuthProvider = (children: React.ReactNode) => {
+  const [user, setUser] = React.useState();
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>
@@ -21,4 +17,4 @@ const AuthProvider = ( {children }: AuthContextProps) => {
   );
 };
 
-export { AuthContext, AuthProvider};
+export { AuthContext, AuthProvider };

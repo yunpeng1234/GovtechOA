@@ -1,28 +1,24 @@
-import axios from 'axios'
+import axios from "axios";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 const API = axios.create({
-    baseURL: 'http://localhost:8000',
-})
+  baseURL: "http://localhost:8000",
+});
 
-
-const signIn = (username, password) => {
-    API.post('/login', {
-        name, password
-    })
-    .then(res=> {
-        if(res?.data.name){
-            const role=res?.data.role;
-            console.log({"role":`${role}`, "name":`${name}`})
-            setAuth({"role":`${role}`, "name":`${name}`});
-            setName('');
-            setPassword('');
-            navigate(from, {replace : true});
-        }
-        else{
-            console.log('incorrect submission');
-            setError(res.message);
-        }
-    })
-    console.log('working');
-}
-} 
+const signIn = async (username: string, password: string) => {
+  const resp = await API.post("/auth/login", {
+    Username: username,
+    Password: password,
+  });
+  if (resp.status == 200) {
+    const token = resp.data.jwt;
+    localStorage.setItem("token", token);
+    const { setUser } = useContext(AuthContext);
+    setUser(username);
+    return { status: 200, message: "Success" };
+  } else {
+    return { status: 400, message: "Failed" };
+  }
+  console.log("working");
+};

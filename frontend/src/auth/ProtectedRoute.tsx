@@ -1,17 +1,17 @@
-import React, { useContext } from 'react';
-import { redirect } from 'react-router-dom';
+import React, { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
-const ProtectedRoute = ({
-  isProtected,
-  children,
-}) => {
-  const { isLoggedIn } = useContext(AuthState);
+import { useLocation, Navigate } from "react-router-dom";
 
-  if (isProtected && !isLoggedIn) {
-    return redirect('/login')
+export function ProtectedRoute({ children }: { children: JSX.Element }) {
+  const { user } = useContext(AuthContext);
+  const token = localStorage.getItem("token");
+  const location = useLocation();
+
+  if (!user || !token) {
+    return <Navigate to="/login" state={{ from: location }} replace />;
+  } else {
+    return children;
   }
-
-  return children
-};
-
+}
 export default ProtectedRoute;

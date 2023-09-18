@@ -1,38 +1,31 @@
-import 'antd/dist/reset.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import HomePage from './Home';
-import LoginPage from './Login';
-import RegisterPage from './Register';
-import React , {useContext} from 'react'
+import "antd/dist/reset.css";
+import "./index.css";
+
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HomePage from "./Home";
+import LoginPage from "./Login";
+import RegisterPage from "./Register";
+import ProtectedRoute from "./auth/ProtectedRoute";
 
 function App() {
-
-  if(!token) {
-    return <LoginPage  />
-  }
-  
   return (
     <div className="wrapper">
-      <h1>Application</h1>
       <BrowserRouter>
-        <Switch>
-          <Route path="/home">
-            <HomePage />
-          </Route>
-          <Route path="/login">
-            <LoginPage />
-          </Route>
-          <Route path="/register">
-            <RegisterPage />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route
+            path=""
+            element={
+              <ProtectedRoute>
+                <HomePage />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+        </Routes>
       </BrowserRouter>
     </div>
-  )
+  );
 }
 
-export default App
-function useState(): [any, any] {
-  throw new Error('Function not implemented.');
-}
-
+export default App;
