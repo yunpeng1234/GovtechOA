@@ -17,7 +17,7 @@ const saveUrl = async (props: URLProp) => {
       originalURL: props.longurl,
       shortenURL: props.shorturl,
     });
-    return urls;
+    return urls.status;
   } catch (e) {
     console.log(e);
   }

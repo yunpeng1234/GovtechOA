@@ -28,7 +28,7 @@ export const register = async (username: string, password: string) => {
       Username: username,
       Password: password,
     });
-    if (resp.status == 200) {
+    if (resp.status == 201) {
       return { status: 200, message: "Success" };
     }
   } catch (e) {
