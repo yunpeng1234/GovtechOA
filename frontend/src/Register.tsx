@@ -1,14 +1,40 @@
-import { Form, Input, Button} from "antd";
+import { Form, Input, Button } from "antd";
+import { register, signIn } from "./api/auth";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "./context/AuthContext";
 
-const onFinish = (values: any) => {
-  console.log("Success:", values);
-};
+interface RegisterFromProps {
+  username: string;
+  password: string;
+}
 
 const onFinishFailed = (errorInfo: any) => {
   console.log("Failed:", errorInfo);
 };
 
 const RegisterPage = () => {
+  const { setUser } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  const onFinish = async (values: RegisterFromProps) => {
+    console.log(values);
+    const res = await register(values.username, values.password);
+
+    if (res?.status == 201) {
+      const sres = await signIn(values.username, values.password);
+
+      if (sres?.status == 200) {
+        setUser(values.username);
+        navigate("/");
+        return;
+      }
+    } else {
+      console.log(res?.message);
+    }
+  };
+
   return (
     <Form
       name="basic"

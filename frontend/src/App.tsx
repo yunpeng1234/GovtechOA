@@ -1,5 +1,5 @@
 import "./index.css";
-
+import "antd/dist/reset.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./Home";
 import LoginPage from "./Login";

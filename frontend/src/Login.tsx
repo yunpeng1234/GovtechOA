@@ -18,7 +18,6 @@ const LoginPage = () => {
 
   const navigate = useNavigate();
   const onFinish = async (values: LoginFormProps) => {
-    console.log(values);
     const res = await signIn(values.username, values.password);
 
     if (res?.status == 200) {
