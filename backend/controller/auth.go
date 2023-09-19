@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"fmt"
 	"net/http"
 
 	helper "github.com/yunpeng1234/GovtechOA/backend/helper/auth"
@@ -14,7 +15,7 @@ func Register(context *gin.Context) {
 	var input template.AuthFormInput
 
 	if err := context.ShouldBindJSON(&input); err != nil {
-
+		fmt.Print(err)
 		context.JSON(http.StatusBadRequest, gin.H{"error": "Bad Request"})
 		return
 	}
