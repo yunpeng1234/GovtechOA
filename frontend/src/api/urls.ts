@@ -20,6 +20,7 @@ const saveUrl = async (props: URLProp) => {
     return urls.status;
   } catch (e) {
     console.log(e);
+    return "Failed";
   }
 };
 

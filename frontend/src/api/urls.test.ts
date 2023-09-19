@@ -32,7 +32,7 @@ describe("Test url apis", () => {
     server.use(
       rest.post("http://localhost:8000/api/url", async (req, res, ctx) => {
         const body = await req.json();
-        if (body.originalURL == "LONG" && body.shortenURLq == "SHORT") {
+        if (body.originalURL == "LONG" && body.shortenURL == "SHORT") {
           return res(ctx.status(200), ctx.json({ message: "success" }));
         }
         return res(ctx.status(400), ctx.json({ message: "failure" }));
