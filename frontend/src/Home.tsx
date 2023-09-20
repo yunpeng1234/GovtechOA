@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { URLReturnProp, getAllUrls, saveUrl } from "./api/urls";
 import { AuthContext } from "./context/AuthContext";
 import { generateShortenedUrl } from "./helper/generateShort";
+import { useNavigate } from "react-router-dom";
 
 const saveShortenedUrl = async (
   user: string,
@@ -15,6 +16,8 @@ const saveShortenedUrl = async (
 };
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
   const { user } = useContext(AuthContext);
   const [shortend, setShortended] = useState("");
   const [url, setUrl] = useState("");
@@ -30,8 +33,19 @@ const HomePage = () => {
     },
   });
 
+  const logout = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    navigate("login");
+  };
+
   return (
     <>
+      <div className="bg-neutral-300 h-8 ">
+        <button className="float-right" onClick={() => logout()}>
+          Logout{" "}
+        </button>
+      </div>
       <div> Url To Shorten </div>
       <div className="flex">
         <input
